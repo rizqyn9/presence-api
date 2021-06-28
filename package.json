@@ -1,0 +1,32 @@
+{
+  "name": "mobilepresence",
+  "version": "1.0.0",
+  "description": "First Official Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adhasetiawan/mobilepresence.git"
+  },
+  "keywords": [
+    "Mobile",
+    "presence"
+  ],
+  "author": "Adha Wiyana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adhasetiawan/mobilepresence/issues"
+  },
+  "homepage": "https://github.com/Adhasetiawan/mobilepresence#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1"
+  }
+}

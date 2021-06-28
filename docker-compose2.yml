@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  mysql_db_container:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASS: password
+    ports:
+      - 3306:3306
+    volumes:
+     # - mysql_db_data_container:/var/lib/mysql
+      - "./data:/var/lib/mysql:rw"
+  adminer_container:
+    image: adminer:latest
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql_db_container
+    ports:
+      - 8080:8080
+    phpmyadmin:
+        depends_on:
+          - mysql_db_container
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        ports:
+          - 8088:8088
+        environment:
+          PMA_HOST: mysql_db_container
+          MYSQL_ROOT_PASSWORD: rootpassword
+volumes:
+  mysql_db_data_container:

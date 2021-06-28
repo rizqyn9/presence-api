@@ -1,0 +1,17 @@
+
+version: '3'
+
+services:
+
+  mysqldb:
+    image: mysql:8.0.2
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "mobilepresence"
+    command: --init-file /data/application/init.sql
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./init.sql:/data/application/init.sql" 
+      - "./config/my.conf:/etc/mysql/conf.d/config-file.cnf"
+      - "./data:/var/lib/mysql:rw"

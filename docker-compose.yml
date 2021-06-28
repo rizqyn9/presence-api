@@ -1,0 +1,25 @@
+
+version: '3.2'
+services:
+    db:
+        image: mysql:5.7
+        restart: always
+        environment:
+          MYSQL_ROOT_PASSWORD: 'rootpassword'
+          MYSQL_DATABASE: 'mydb'
+          MYSQL_USER: 'user'
+          MYSQL_PASSWORD: 'password'
+        ports:
+          - 3306:3306
+        volumes:
+           - "./data:/var/lib/mysql:rw"
+    phpmyadmin:
+        depends_on:
+          - db
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        ports:
+          - 8088:80
+        environment:
+          PMA_HOST: db
+          MYSQL_ROOT_PASSWORD: rootpassword
